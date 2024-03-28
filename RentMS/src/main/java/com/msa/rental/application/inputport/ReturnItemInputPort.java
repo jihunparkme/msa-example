@@ -2,7 +2,7 @@ package com.msa.rental.application.inputport;
 
 import com.msa.rental.application.outputport.EventOutputPort;
 import com.msa.rental.application.outputport.RentalCardOutputPort;
-import com.msa.rental.application.usecase.ReturnItemUsercase;
+import com.msa.rental.application.usecase.ReturnItemUserCase;
 import com.msa.rental.domain.model.RentalCard;
 import com.msa.rental.domain.model.event.ItemReturned;
 import com.msa.rental.domain.model.vo.Item;
@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class ReturnItemInputPort implements ReturnItemUsercase {
+public class ReturnItemInputPort implements ReturnItemUserCase {
 
     private final RentalCardOutputPort rentalCardOutputPort;
     private final EventOutputPort eventOutputPort;

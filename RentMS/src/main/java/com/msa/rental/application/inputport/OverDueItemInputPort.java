@@ -1,7 +1,7 @@
 package com.msa.rental.application.inputport;
 
 import com.msa.rental.application.outputport.RentalCardOutputPort;
-import com.msa.rental.application.usecase.OverdueItemUsercase;
+import com.msa.rental.application.usecase.OverdueItemUserCase;
 import com.msa.rental.domain.model.RentalCard;
 import com.msa.rental.domain.model.vo.Item;
 import com.msa.rental.framework.web.dto.RentalCardOutputDTO;
@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class OverDueItemInputPort implements OverdueItemUsercase {
+public class OverDueItemInputPort implements OverdueItemUserCase {
 
     private final RentalCardOutputPort rentalCardOutputPort;
     @Override

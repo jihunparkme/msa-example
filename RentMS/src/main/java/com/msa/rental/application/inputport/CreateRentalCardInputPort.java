@@ -1,7 +1,7 @@
 package com.msa.rental.application.inputport;
 
 import com.msa.rental.application.outputport.RentalCardOutputPort;
-import com.msa.rental.application.usecase.CreateRentalCardUsecase;
+import com.msa.rental.application.usecase.CreateRentalCardUseCase;
 import com.msa.rental.domain.model.RentalCard;
 import com.msa.rental.domain.model.vo.IDName;
 import com.msa.rental.framework.web.dto.RentalCardOutputDTO;
@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class CreateRentalCardInputPort implements CreateRentalCardUsecase {
+public class CreateRentalCardInputPort implements CreateRentalCardUseCase {
 
     private final RentalCardOutputPort rentalCardOutputPort;
 

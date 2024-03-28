@@ -2,7 +2,7 @@ package com.msa.rental.application.inputport;
 
 import com.msa.rental.application.outputport.EventOutputPort;
 import com.msa.rental.application.outputport.RentalCardOutputPort;
-import com.msa.rental.application.usecase.RentItemUsecase;
+import com.msa.rental.application.usecase.RentItemUseCase;
 import com.msa.rental.domain.model.RentalCard;
 import com.msa.rental.domain.model.event.ItemRented;
 import com.msa.rental.domain.model.vo.IDName;
@@ -17,7 +17,7 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class RentItemInputPort implements RentItemUsecase {
+public class RentItemInputPort implements RentItemUseCase {
 
     private final RentalCardOutputPort rentalCardOutputPort;
     private final EventOutputPort eventOutputPort;

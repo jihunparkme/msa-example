@@ -6,25 +6,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class RentalCardOutputDTO {
 
     private String rentalCardId;
     private String memberId;
     private String memberName;
-    //대여가능여부
-    private String rentStatus;
-    //전체연체료
-    private Long totalLateFee;
-    //전체대여도서건수
-    private Long totalRentalCnt;
-    //반납도서건수
-    private Long totalReturnCnt;
-    //연체중인도서건수
-    private Long totalOverduedCnt;
+    private String rentStatus; // 대여가능여부
+    private Long totalLateFee; // 전체연체료
+    private Long totalRentalCnt; // 전체대여도서건수
+    private Long totalReturnCnt; // 반납도서건수
+    private Long totalOverdueCnt; // 연체중인도서건수
 
     public static RentalCardOutputDTO mapToDTO(RentalCard rental){
         RentalCardOutputDTO rentDTO = new RentalCardOutputDTO();
@@ -34,7 +29,7 @@ public class RentalCardOutputDTO {
         rentDTO.setRentStatus(rental.getRentStatus().toString());
         rentDTO.setTotalRentalCnt(rental.getRentalItemList().stream().count());
         rentDTO.setTotalReturnCnt(rental.getReturnItemLIst().stream().count());
-        rentDTO.setTotalOverduedCnt(rental.getRentalItemList().stream().filter(i -> i.isOverdue()).count());
+        rentDTO.setTotalOverdueCnt(rental.getRentalItemList().stream().filter(i -> i.isOverdue()).count());
         return rentDTO;
     }
 }

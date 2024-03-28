@@ -16,11 +16,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RentalController {
 
-    private final RentItemUsecase rentItemUsecase;
-    private final ReturnItemUsercase returnItemUsercase;
-    private final CreateRentalCardUsecase createRentalCardUsecase;
-    private final OverdueItemUsercase overdueItemUsercase;
-    private final ClearOverdueItemUsecase clearOverdueItemUsecase;
+    private final RentItemUseCase rentItemUsecase;
+    private final ReturnItemUserCase returnItemUsercase;
+    private final CreateRentalCardUseCase createRentalCardUsecase;
+    private final OverdueItemUserCase overdueItemUsercase;
+    private final ClearOverdueItemUseCase clearOverdueItemUsecase;
     private final InquiryUsecase inquiryUsecase;
 
     @ApiOperation(value = "도서카드 생성",notes = "사용자정보 -> 도서카드정보")

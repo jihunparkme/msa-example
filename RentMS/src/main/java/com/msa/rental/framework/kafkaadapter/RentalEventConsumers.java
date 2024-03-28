@@ -1,7 +1,7 @@
 package com.msa.rental.framework.kafkaadapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.msa.rental.application.usecase.CompensationUsecase;
+import com.msa.rental.application.usecase.CompensationUseCase;
 import com.msa.rental.domain.model.event.EventResult;
 import com.msa.rental.domain.model.event.EventType;
 import com.msa.rental.domain.model.vo.IDName;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class RentalEventConsumers {
     private final Logger log = LoggerFactory.getLogger(RentalEventConsumers.class);
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final CompensationUsecase compensationUsecase;
+    private final CompensationUseCase compensationUsecase;
     @KafkaListener(topics="${consumer.topic1.name}",groupId = "${consumer.groupid.name}")
     public void consumeRental(ConsumerRecord<String, String> record) throws Exception {
         try {
@@ -34,15 +34,15 @@ public class RentalEventConsumers {
                 System.out.println("eventType =" + eventType.toString());
                 switch (eventType) {
                     case RENT:
-                        compensationUsecase.cancleRentItem(idName, item);
+                        compensationUsecase.cancelRentItem(idName, item);
                         System.out.println("대여취소 보상트랜젝션 실행");
                         break;
                     case RETURN:
-                        compensationUsecase.cancleReturnItem(idName, item, point);
+                        compensationUsecase.cancelReturnItem(idName, item, point);
                         System.out.println("반납취소 보상트랜젝션 실행");
                         break;
                     case OVERDUE:
-                        compensationUsecase.cancleMakeAvailableRental(idName, point);
+                        compensationUsecase.cancelMakeAvailableRental(idName, point);
                         System.out.println("연체해제처리취소 보상트랜젝션 실행");
                         break;
                     default:
