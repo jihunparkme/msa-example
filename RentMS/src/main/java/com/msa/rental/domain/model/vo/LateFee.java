@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 
+/**
+ * 연체료는 point 속성으로 가지며 포인트를 부여하고, 감소시키는 로직
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

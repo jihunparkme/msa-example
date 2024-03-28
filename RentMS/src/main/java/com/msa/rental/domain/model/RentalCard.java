@@ -17,6 +17,10 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 대여라는 비즈니스 활동의 명시적으로 드러나도록 RentalCard 개념 도출
+ * 연도 + UUID 값을 갖는 RentalCardNo 을 식별자로 정의
+ */
 @Data
 @Entity
 @NoArgsConstructor
@@ -125,13 +129,17 @@ public class RentalCard {
         }
     }
 
+    /**
+     *  강제 연체 처리
+     *  시스템에 의해서 배치나 스케줄로 실행
+     */
     public RentalCard overdueItem(Item item) {
         RentalItem rentalItem = this.rentalItemList.stream()
                 .filter(i -> i.getItem().equals(item))
                 .findFirst().get();
         rentalItem.setOverdue(true);
         this.rentStatus = RentStatus.RENT_UNAVAILABLE;
-        rentalItem.setOverdueDate(LocalDate.now().minusDays(1)); // 강제로 연체 처리(테스트용)
+        rentalItem.setOverdueDate(LocalDate.now().minusDays(1));
         return this;
     }
 
