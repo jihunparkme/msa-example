@@ -12,6 +12,7 @@ import java.util.Optional;
 public class RentalCardJpaAdapter implements RentalCardOutputPort {
 
     private final RentalCardRepository rentalCardRepository;
+
     @Override
     public Optional<RentalCard> loadRentalCard(String userId) {
         return rentalCardRepository.findByMemberId(userId);
