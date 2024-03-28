@@ -28,7 +28,7 @@ public class RentItemOutputDTO {
         rentItemOutputDTO.setItemNo(rentItem.getItem().getNo());
         rentItemOutputDTO.setItemtitle(rentItem.getItem().getTitle());
         rentItemOutputDTO.setRentDate(rentItem.getRentDate());
-        rentItemOutputDTO.setOverdued(rentItem.isOverdued());
+        rentItemOutputDTO.setOverdued(rentItem.isOverdue());
         rentItemOutputDTO.setOverdueDate(rentItem.getOverdueDate());
         return rentItemOutputDTO;
     }

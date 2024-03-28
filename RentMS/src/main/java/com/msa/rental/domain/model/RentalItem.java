@@ -14,20 +14,16 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Embeddable
 public class RentalItem {
-   @Embedded
-   private Item item;
-   private LocalDate rentDate;
+    @Embedded
+    private Item item;
 
-   private boolean overdued;
+    private LocalDate rentDate;
 
-   private LocalDate overdueDate; //반납예정일
+    private boolean overdue;
 
-   public static RentalItem createRentalItem(Item item)
-   {
-    return new RentalItem(item,LocalDate.now(),false,LocalDate.now().plusDays(14));
-   }
+    private LocalDate overdueDate; // 반납예정일
 
-   public static RentalItem sample(){
-    return RentalItem.createRentalItem(Item.Sample());
-   }
+    public static RentalItem createRentalItem(Item item) {
+        return new RentalItem(item, LocalDate.now(), false, LocalDate.now().plusDays(14));
+    }
 }

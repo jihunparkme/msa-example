@@ -62,7 +62,7 @@ public class RentalApplication {
     private static void showCardStatus(RentalCard card) {
         System.out.println("📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊");
         System.out.println("📘📘 " + card.getMember().getName() + " 도서카드 ");
-        System.out.println("📘📘 대여도서 연체상태 : " + card.getRentalItemList().stream().map(m -> m.isOverdued()).collect(Collectors.toList()));
+        System.out.println("📘📘 대여도서 연체상태 : " + card.getRentalItemList().stream().map(m -> m.isOverdue()).collect(Collectors.toList()));
         System.out.println("📘📘 총연체료: " + card.getLateFee().getPoint());
         System.out.println("📘📘 대여가능여부: " + card.getRentStatus().toString());
         System.out.println("📘📘 대여 목록");

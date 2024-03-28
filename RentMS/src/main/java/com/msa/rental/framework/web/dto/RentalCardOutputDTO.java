@@ -34,7 +34,7 @@ public class RentalCardOutputDTO {
         rentDTO.setRentStatus(rental.getRentStatus().toString());
         rentDTO.setTotalRentalCnt(rental.getRentalItemList().stream().count());
         rentDTO.setTotalReturnCnt(rental.getReturnItemLIst().stream().count());
-        rentDTO.setTotalOverduedCnt(rental.getRentalItemList().stream().filter(i -> i.isOverdued()).count());
+        rentDTO.setTotalOverduedCnt(rental.getRentalItemList().stream().filter(i -> i.isOverdue()).count());
         return rentDTO;
     }
 }

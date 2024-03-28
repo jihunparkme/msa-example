@@ -13,12 +13,4 @@ import javax.persistence.Embeddable;
 public class IDName {
     private String id;
     private String name;
-
-    public static IDName sampe(){
-        return new IDName("scant","han");
-    }
-
-    public static void main(String[] args){
-        System.out.println(sampe().toString());
-    }
 }

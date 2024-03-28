@@ -35,15 +35,6 @@ public class RentalCard {
     @ElementCollection
     private List<ReturnItem> returnItemLIst = new ArrayList<ReturnItem>();
 
-    public static RentalCard sample(){
-        RentalCard rentalCard = new RentalCard();
-        rentalCard.setRentalCardNo(RentalCardNo.createRentalCardNo());
-        rentalCard.setMember(IDName.sampe());
-        rentalCard.setRentStatus(RentStatus.RENT_AVAILABLE);
-        rentalCard.setLateFee(LateFee.sample());
-        return rentalCard;
-    }
-
     private void addRentalItem(RentalItem rentalItem){
         this.rentalItemList.add(rentalItem);
     }
@@ -128,7 +119,7 @@ public class RentalCard {
     public RentalCard overdueItem(Item item)
     {
         RentalItem rentalItem = this.rentalItemList.stream().filter(i -> i.getItem().equals(item)).findFirst().get();
-        rentalItem.setOverdued(true);
+        rentalItem.setOverdue(true);
         this.rentStatus = RentStatus.RENT_UNAVAILABLE;
         // 연체 억지로 만들기 - 실제로는 필요없는 코드
         rentalItem.setOverdueDate(LocalDate.now().minusDays(1));
