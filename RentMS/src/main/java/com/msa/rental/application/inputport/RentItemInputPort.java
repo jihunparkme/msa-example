@@ -27,9 +27,9 @@ public class RentItemInputPort implements RentItemUseCase {
         RentalCard rentalCard = rentalCardOutputPort.loadRentalCard(rental.userId)
                 .orElseGet(() -> RentalCard.createRentalCard(new IDName(rental.getUserId(), rental.getUserNm())));
 
-        Item newItem = new Item(rental.getItemId(),rental.getItemTitle());
+        Item newItem = new Item(rental.getItemId(), rental.getItemTitle());
         rentalCard.rentItem(newItem);
-        //대여 이벤트 생성 및 발행
+
         ItemRented itemRentedEvent = RentalCard.createItemRentedEvent(rentalCard.getMember(), newItem, 10L);
         eventOutputPort.occurRentalEvent(itemRentedEvent);
 

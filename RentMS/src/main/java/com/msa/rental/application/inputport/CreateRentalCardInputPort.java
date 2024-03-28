@@ -23,6 +23,5 @@ public class CreateRentalCardInputPort implements CreateRentalCardUseCase {
         RentalCard rentalCard = RentalCard.createRentalCard(new IDName(owner.getUserId(), owner.getUserNm()));
         RentalCard save = rentalCardOutputPort.save(rentalCard);
         return RentalCardOutputDTO.mapToDTO(save);
-
     }
 }

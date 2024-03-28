@@ -26,7 +26,7 @@ public class ClearOverdueItemInputPort implements ClearOverdueItemUseCase {
 
         rentalCard.makeAvailableRental(clearOverdueInfoDTO.getPoint());
 
-        eventOutputPort.occurOverdueClearedEvent(RentalCard.createOverdueCleardEvent(rentalCard.getMember(),clearOverdueInfoDTO.getPoint()));
+        eventOutputPort.occurOverdueClearedEvent(RentalCard.createOverdueCleardEvent(rentalCard.getMember(), clearOverdueInfoDTO.getPoint()));
 
         return RentalResultOutputDTO.mapToDTO(rentalCard);
     }

@@ -28,9 +28,9 @@ public class CompensationInputPort implements CompensationUseCase {
                 .map(rentalCard -> {
                     try {
                         rentalCard.cancelRentItem(item);
-                        eventOutputPort.occurPointUseCommand(new PointUseCommand(idName,10L));
+                        eventOutputPort.occurPointUseCommand(new PointUseCommand(idName, 10L));
                         return rentalCard;
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                 })
@@ -51,6 +51,7 @@ public class CompensationInputPort implements CompensationUseCase {
                 })
                 .orElseThrow(() -> new NoSuchElementException("Rental card not found for ID: " + idName.getId()));
     }
+
     @Override
     public long cancelMakeAvailableRental(IDName idName, long point) {
         return rentalCardOutputPort.loadRentalCard(idName.getId())

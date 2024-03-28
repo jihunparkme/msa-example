@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 public class InquiryInputPort implements InquiryUsecase {
 
     private final RentalCardOutputPort rentalCardOutputPort;
+
     @Override
     public Optional<RentalCardOutputDTO> getRentalCard(UserInputDTO userInputDTO) {
         return rentalCardOutputPort.loadRentalCard(userInputDTO.UserId)

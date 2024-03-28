@@ -17,12 +17,14 @@ import javax.transaction.Transactional;
 public class OverDueItemInputPort implements OverdueItemUserCase {
 
     private final RentalCardOutputPort rentalCardOutputPort;
+
     @Override
     public RentalCardOutputDTO overDueItem(UserItemInputDTO rental) throws Exception {
         RentalCard rentalCard = rentalCardOutputPort.loadRentalCard(rental.userId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 카드가 존재하지 않습니다."));
 
-        rentalCard.overdueItem(new Item(rental.getItemId(),rental.getItemTitle()));
+        rentalCard.overdueItem(new Item(rental.getItemId(), rental.getItemTitle()));
+
         return RentalCardOutputDTO.mapToDTO(rentalCard);
     }
 }
