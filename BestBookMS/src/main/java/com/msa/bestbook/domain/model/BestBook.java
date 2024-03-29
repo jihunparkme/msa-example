@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 import java.util.UUID;
 
 @Document
@@ -19,7 +18,7 @@ public class BestBook {
     private Item item;
     private long rentCount;
 
-    public static BestBook registerBestBook(Item item){
+    public static BestBook registerBestBook(Item item) {
         UUID uuid = UUID.randomUUID();
         var bestBook = new BestBook();
         bestBook.setId(uuid.toString());
@@ -28,9 +27,9 @@ public class BestBook {
         return bestBook;
     }
 
-    public Long increseBestBookCount(){
-        this.rentCount = this.getRentCount() +1 ;
-        return  this.rentCount;
+    public Long increaseBestBookCount() {
+        this.rentCount = this.getRentCount() + 1;
+        return this.rentCount;
     }
 }
 
