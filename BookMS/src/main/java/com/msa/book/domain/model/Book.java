@@ -44,14 +44,6 @@ public class Book {
         return book;
     }
 
-    public static Book sample() {
-        return enterBook("엔터프라이즈 아키텍처 패턴", "마틴파울러", "21321321", "엔터프라이즈 패턴에 관한 좋은 서적",
-                LocalDate.now(),
-                Source.SUPPLY,
-                Classfication.COMPUTER,
-                Location.JEONGJA);
-    }
-
     public Book makeAvailable() {
         this.setBookStatus(BookStatus.AVAILABLE);
         return this;
