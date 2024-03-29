@@ -12,9 +12,4 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Authority {
     public UserRole roleName;
-
-    public static Authority sample()
-    {
-        return new Authority(UserRole.USER);
-    }
 }

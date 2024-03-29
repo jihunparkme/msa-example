@@ -13,8 +13,4 @@ import javax.persistence.Embeddable;
 public class PassWord {
     public String presentPWD;
     public String pastPWD;
-
-    public static PassWord sample(){
-        return new PassWord("12345","abcde");
-    }
 }

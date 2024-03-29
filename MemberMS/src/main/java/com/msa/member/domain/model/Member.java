@@ -24,11 +24,11 @@ public class Member {
     @Embedded
     private Email email;
     @ElementCollection
-    private List<Authority> authorites = new ArrayList<Authority>();
+    private List<Authority> authorities = new ArrayList<>();
     @Embedded
     private Point point;
 
-    public static Member registerMember(IDName idName,PassWord pwd,Email email){
+    public static Member registerMember(IDName idName, PassWord pwd, Email email) {
         Member member = new Member();
         member.setIdName(idName);
         member.setPassword(pwd);
@@ -39,23 +39,21 @@ public class Member {
     }
 
     private void addAuthority(Authority authority) {
-        this.authorites.add(authority);
+        this.authorities.add(authority);
     }
 
-    public Point savePoint(Point point)
-    {
+    public Point savePoint(Point point) {
         return this.point.addPoint(point);
     }
 
     public Point usePoint(Point point) throws Exception {
-       return this.point.removePoint(point);
+        return this.point.removePoint(point);
     }
 
-    public Member login(IDName idNname, PassWord password){
+    public Member login(IDName idNname, PassWord password) {
         return this;
     }
-    public void logout(IDName idName){
+
+    public void logout(IDName idName) {
     }
-
 }
-
