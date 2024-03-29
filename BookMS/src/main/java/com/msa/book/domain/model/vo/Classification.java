@@ -1,6 +1,6 @@
 package com.msa.book.domain.model.vo;
 
-public enum Classfication {
+public enum Classification {
     ARTS,
     COMPUTER,
     LITERATURE

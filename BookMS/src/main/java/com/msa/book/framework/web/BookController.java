@@ -17,19 +17,17 @@ public class BookController {
     private final InquiryUseCase inquiryUsecase;
 
     @PostMapping("/book")
-    public ResponseEntity<BookOutPutDTO> createBook(@RequestBody BookInfoDTO bookInfoDTO)
-    {
+    public ResponseEntity<BookOutPutDTO> createBook(@RequestBody BookInfoDTO bookInfoDTO) {
         BookOutPutDTO bookOutPutDTO = addBookUsecase.addBook(bookInfoDTO);
         return new ResponseEntity<>(bookOutPutDTO, HttpStatus.CREATED);
     }
 
     @GetMapping("/book/{no}")
-    public ResponseEntity<BookOutPutDTO> getBookInfo(@PathVariable("no") String no)
-    {
+    public ResponseEntity<BookOutPutDTO> getBookInfo(@PathVariable("no") String no) {
         BookOutPutDTO bookInfo = inquiryUsecase.getBookInfo(Long.parseLong(no));
 
         return bookInfo != null
-                ? new ResponseEntity<>(bookInfo,HttpStatus.OK)
+                ? new ResponseEntity<>(bookInfo, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 

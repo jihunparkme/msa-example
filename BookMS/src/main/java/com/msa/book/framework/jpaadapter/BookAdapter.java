@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 public class BookAdapter implements BookOutPutPort {
 
     private final BookRepository bookRepository;
+
     @Override
     public Book loadBook(long bookNo) {
         return bookRepository.findById(bookNo).get();

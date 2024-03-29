@@ -20,7 +20,7 @@ public class Book {
     private String title;
     @Embedded
     private BookDesc desc;
-    private Classfication classfication;
+    private Classification classfication;
     private BookStatus bookStatus;
     private Location location;
 
@@ -30,7 +30,7 @@ public class Book {
                                  String description,
                                  LocalDate publicationDate,
                                  Source source,
-                                 Classfication classfication,
+                                 Classification classfication,
                                  Location location) {
 
         BookDesc bookDesc = BookDesc.createBookDesc(
