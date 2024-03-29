@@ -1,7 +1,7 @@
 package com.msa.book.framework.web;
 
-import com.msa.book.application.usecase.AddBookUsecase;
-import com.msa.book.application.usecase.InquiryUsecase;
+import com.msa.book.application.usecase.AddBookUseCase;
+import com.msa.book.application.usecase.InquiryUseCase;
 import com.msa.book.framework.web.dto.BookInfoDTO;
 import com.msa.book.framework.web.dto.BookOutPutDTO;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class BookController {
-    private final AddBookUsecase addBookUsecase;
-    private final InquiryUsecase inquiryUsecase;
+    private final AddBookUseCase addBookUsecase;
+    private final InquiryUseCase inquiryUsecase;
 
     @PostMapping("/book")
     public ResponseEntity<BookOutPutDTO> createBook(@RequestBody BookInfoDTO bookInfoDTO)

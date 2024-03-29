@@ -1,7 +1,7 @@
 package com.msa.book.application.inputport;
 
 import com.msa.book.application.outputport.BookOutPutPort;
-import com.msa.book.application.usecase.AddBookUsecase;
+import com.msa.book.application.usecase.AddBookUseCase;
 import com.msa.book.domain.model.Book;
 import com.msa.book.domain.model.vo.Classfication;
 import com.msa.book.domain.model.vo.Location;
@@ -16,9 +16,10 @@ import javax.transaction.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class AddBookInputPort implements AddBookUsecase {
+public class AddBookInputPort implements AddBookUseCase {
 
     private final BookOutPutPort bookOutPutPort;
+
     @Override
     public BookOutPutDTO addBook(BookInfoDTO bookInfoDTO) {
         Book book = Book.enterBook(
@@ -28,7 +29,7 @@ public class AddBookInputPort implements AddBookUsecase {
                 bookInfoDTO.getDescription(),
                 bookInfoDTO.getPublicationDate(),
                 Source.valueOf(bookInfoDTO.getSource()),
-                Classfication.valueOf(bookInfoDTO.getClassfication()),
+                Classfication.valueOf(bookInfoDTO.getClassification()),
                 Location.valueOf(bookInfoDTO.getLocation())
         );
         Book save = bookOutPutPort.save(book);

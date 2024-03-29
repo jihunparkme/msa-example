@@ -15,8 +15,7 @@ public class BookOutPutDTO {
     private String bookTitle;
     private String bookStatus;
 
-    public static BookOutPutDTO mapToDTO(Book book)
-    {
+    public static BookOutPutDTO mapToDTO(Book book) {
         BookOutPutDTO bookOutPutDTO = new BookOutPutDTO();
         bookOutPutDTO.setBookNo(book.getNo());
         bookOutPutDTO.setBookTitle(book.getTitle());

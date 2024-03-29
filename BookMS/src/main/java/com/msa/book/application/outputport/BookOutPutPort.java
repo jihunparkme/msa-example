@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookOutPutPort {
-    public Book loadBook(long bookNo);
+    Book loadBook(long bookNo);
 
-    public Book save(Book book);
+    Book save(Book book);
 }

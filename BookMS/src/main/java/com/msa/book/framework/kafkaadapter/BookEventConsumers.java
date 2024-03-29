@@ -1,8 +1,8 @@
 package com.msa.book.framework.kafkaadapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.msa.book.application.usecase.MakeAvailableUsecase;
-import com.msa.book.application.usecase.MakeUnAvailableUsecase;
+import com.msa.book.application.usecase.MakeAvailableUseCase;
+import com.msa.book.application.usecase.MakeUnAvailableUseCase;
 import com.msa.book.domain.model.event.EventResult;
 import com.msa.book.domain.model.event.EventType;
 import com.msa.book.domain.model.event.ItemRented;
@@ -20,8 +20,8 @@ public class BookEventConsumers {
 
     //private final Logger log = LoggerFactory.getLogger(BookEventConsumers.class);
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final MakeAvailableUsecase makeAvailableUsecase;
-    private final MakeUnAvailableUsecase makeUnavailable;
+    private final MakeAvailableUseCase makeAvailableUsecase;
+    private final MakeUnAvailableUseCase makeUnavailable;
     private final BookEventProducer eventProducer;
 
     @KafkaListener(topics = "${consumer.topic1.name}", groupId = "${consumer.groupid.name}")
