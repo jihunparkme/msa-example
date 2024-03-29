@@ -7,6 +7,6 @@ import org.yaml.snakeyaml.events.Event;
 
 import java.util.Optional;
 
-public interface MemberRepository extends JpaRepository<Member,Long> {
-    public Optional<Member> findMemberByIdName(IDName idName);
+public interface MemberRepository extends JpaRepository<Member, Long> {
+    Optional<Member> findMemberByIdName(IDName idName);
 }

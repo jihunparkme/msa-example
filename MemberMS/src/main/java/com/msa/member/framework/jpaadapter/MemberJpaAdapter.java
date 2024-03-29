@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 public class MemberJpaAdapter implements MemberOutPutPort {
 
     private final MemberRepository memberRepository;
+
     @Override
     public Member loadMember(long memberNo) {
         return memberRepository.findById(memberNo).get();
