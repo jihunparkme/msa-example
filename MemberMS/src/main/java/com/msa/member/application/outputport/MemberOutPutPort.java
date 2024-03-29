@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MemberOutPutPort {
-    public Member loadMember(long memberNo);
-    public  Member loadMemberByIdName(IDName idName);
-    public Member saveMember(Member member);
+    Member loadMember(long memberNo);
+
+    Member loadMemberByIdName(IDName idName);
+
+    Member saveMember(Member member);
 }

@@ -1,7 +1,7 @@
 package com.msa.member.application.inputport;
 
 import com.msa.member.application.outputport.MemberOutPutPort;
-import com.msa.member.application.usecase.AddMemberUsecase;
+import com.msa.member.application.usecase.AddMemberUseCase;
 import com.msa.member.domain.model.Member;
 import com.msa.member.domain.model.vo.Email;
 import com.msa.member.domain.model.vo.IDName;
@@ -15,19 +15,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class AddMemberInputPort implements AddMemberUsecase {
+public class AddMemberInputPort implements AddMemberUseCase {
 
     private final MemberOutPutPort memberOutPutPort;
+
     @Override
     public MemberOutPutDTO addMember(MemberInfoDTO memberInfoDTO) {
-
-        IDName idName = new IDName(memberInfoDTO.getId(),memberInfoDTO.getName());
-        PassWord pwd = new PassWord(memberInfoDTO.getPassWord(),memberInfoDTO.getPassWord());
+        IDName idName = new IDName(memberInfoDTO.getId(), memberInfoDTO.getName());
+        PassWord pwd = new PassWord(memberInfoDTO.getPassWord(), memberInfoDTO.getPassWord());
         Email email = new Email(memberInfoDTO.getEmail());
-        Member addedMember = Member.registerMember(idName,pwd,email);
+        Member addedMember = Member.registerMember(idName, pwd, email);
 
         Member savedMember = memberOutPutPort.saveMember(addedMember);
-
         return MemberOutPutDTO.mapToDTO(savedMember);
     }
 }

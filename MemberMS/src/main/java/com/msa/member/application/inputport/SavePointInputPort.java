@@ -1,7 +1,7 @@
 package com.msa.member.application.inputport;
 
 import com.msa.member.application.outputport.MemberOutPutPort;
-import com.msa.member.application.usecase.SavePointUsecase;
+import com.msa.member.application.usecase.SavePointUseCase;
 import com.msa.member.domain.model.Member;
 import com.msa.member.domain.model.vo.IDName;
 import com.msa.member.domain.model.vo.Point;
@@ -13,9 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Service
 @Transactional
-public class SavePointInputPort implements SavePointUsecase {
+public class SavePointInputPort implements SavePointUseCase {
 
     private final MemberOutPutPort memberOutPutPort;
+
     @Override
     public MemberOutPutDTO savePoint(IDName idName, Long point) {
         Member loadMember = memberOutPutPort.loadMemberByIdName(idName);

@@ -1,7 +1,7 @@
 package com.msa.member.framework.web;
 
-import com.msa.member.application.usecase.AddMemberUsecase;
-import com.msa.member.application.usecase.InquiryMemberUsecase;
+import com.msa.member.application.usecase.AddMemberUseCase;
+import com.msa.member.application.usecase.InquiryMemberUseCase;
 import com.msa.member.framework.web.dto.MemberInfoDTO;
 import com.msa.member.framework.web.dto.MemberOutPutDTO;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private final AddMemberUsecase addMemberUsecase;
-    private final InquiryMemberUsecase inquiryMemberUsecase;
+    private final AddMemberUseCase addMemberUsecase;
+    private final InquiryMemberUseCase inquiryMemberUsecase;
 
     @PostMapping("/Member/")
     public ResponseEntity<MemberOutPutDTO> addMember(@RequestBody MemberInfoDTO memberInfoDTO) {

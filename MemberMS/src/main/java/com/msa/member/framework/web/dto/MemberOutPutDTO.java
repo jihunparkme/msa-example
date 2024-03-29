@@ -15,16 +15,15 @@ public class MemberOutPutDTO {
     private String Name;
     private String passWord;
     private String email;
-
     private long point;
 
-    public static  MemberOutPutDTO mapToDTO(Member member){
-        MemberOutPutDTO meberOutPutDTO = new MemberOutPutDTO();
-        meberOutPutDTO.setId(member.getIdName().getId());
-        meberOutPutDTO.setName(member.getIdName().getName());
-        meberOutPutDTO.setPassWord(member.getPassword().getPresentPWD());
-        meberOutPutDTO.setEmail(member.getEmail().getAddress());
-        meberOutPutDTO.setPoint(member.getPoint().getPointValue());
-        return meberOutPutDTO;
+    public static MemberOutPutDTO mapToDTO(Member member) {
+        MemberOutPutDTO memberOutPutDTO = new MemberOutPutDTO();
+        memberOutPutDTO.setId(member.getIdName().getId());
+        memberOutPutDTO.setName(member.getIdName().getName());
+        memberOutPutDTO.setPassWord(member.getPassword().getPresentPWD());
+        memberOutPutDTO.setEmail(member.getEmail().getAddress());
+        memberOutPutDTO.setPoint(member.getPoint().getPointValue());
+        return memberOutPutDTO;
     }
 }
