@@ -22,12 +22,12 @@ public class BestBookService {
         return bookRepository.findById(id);
     }
 
-    public void dealBestBook(Item item){
+    public void dealBestBook(Item item) {
         BestBook bestBook = bookRepository.findBestBookByItem(item);
-        if (bestBook != null){
+        if (bestBook != null) {
             bestBook.increaseBestBookCount();
         } else {
-            bestBook =  BestBook.registerBestBook(item);
+            bestBook = BestBook.registerBestBook(item);
         }
         saveBook(bestBook);
     }
