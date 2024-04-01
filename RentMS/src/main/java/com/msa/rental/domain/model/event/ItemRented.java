@@ -7,8 +7,8 @@ import lombok.Getter;
 
 import java.io.Serializable;
 
-@AllArgsConstructor
 @Getter
+@AllArgsConstructor
 public class ItemRented implements Serializable {
     private IDName idName;
     private Item item;

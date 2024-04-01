@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
-public class EventResult  implements Serializable {
+public class EventResult implements Serializable {
     private EventType eventType;
     private boolean isSuccessed;
     private IDName idName;

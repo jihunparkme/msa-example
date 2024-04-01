@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class OverdueCleared implements Serializable {
     private IDName idName;
     private long point;
