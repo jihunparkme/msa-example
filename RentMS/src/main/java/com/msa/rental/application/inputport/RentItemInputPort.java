@@ -30,11 +30,11 @@ public class RentItemInputPort implements RentItemUseCase {
         /**
          * 비즈니스 처리와 이벤트 발행은 트랜잭션이 보장되어야 한다.
          */
-        Item newItem = new Item(rental.getItemId(), rental.getItemTitle());
-        rentalCard.rentItem(newItem);
+        Item returnItem = new Item(rental.getItemId(), rental.getItemTitle());
+        rentalCard.rentItem(returnItem);
 
         // 대여 이벤트 생성 및 발행
-        ItemRented itemRentedEvent = RentalCard.createItemRentedEvent(rentalCard.getMember(), newItem, 10L);
+        ItemRented itemRentedEvent = RentalCard.createItemRentedEvent(rentalCard.getMember(), returnItem, 10L);
         eventOutputPort.occurRentalEvent(itemRentedEvent);
 
         return RentalCardOutputDTO.mapToDTO(rentalCard);
