@@ -8,12 +8,14 @@ import com.msa.book.domain.model.event.EventType;
 import com.msa.book.domain.model.event.ItemRented;
 import com.msa.book.domain.model.event.ItemReturned;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class BookEventConsumers {
@@ -25,7 +27,7 @@ public class BookEventConsumers {
 
     @KafkaListener(topics = "${consumer.topic1.name}", groupId = "${consumer.groupid.name}")
     public void consumeRental(ConsumerRecord<String, String> record) throws IOException {
-        System.out.printf("rental_rent:" + record.value());
+        log.info("rental_rent: {}", record.value());
         ItemRented itemRented = objectMapper.readValue(record.value(), ItemRented.class);
 
         EventResult eventResult = new EventResult();
@@ -35,11 +37,11 @@ public class BookEventConsumers {
         eventResult.setPoint(itemRented.getPoint());
 
         try {
-            System.out.println("전송받은 값 :" + record.value());
+            log.info("전송받은 값: {}", record.value());
             makeUnavailable.unavailable(Long.valueOf(itemRented.getItem().getNo()));
             eventResult.setSuccessed(true);
         } catch (Exception e) {
-            System.out.println("도서 상태가 논리적으로 맞지 않음");
+            log.error("도서 상태가 논리적으로 맞지 않은 상태임");
             eventResult.setSuccessed(false);
         }
 
@@ -57,11 +59,11 @@ public class BookEventConsumers {
         eventResult.setPoint(itemReturned.getPoint());
 
         try {
-            System.out.printf("전송받은 값 :" + record.value());
+            log.info("전송받은 값: {}", record.value());
             makeAvailableUsecase.available(Long.valueOf(itemReturned.getItem().getNo()));
             eventResult.setSuccessed(true);
         } catch (IllegalArgumentException e) {
-            System.out.println("도서 상태가 논리적으로 맞지 않은 상태임");
+            log.error("도서 상태가 논리적으로 맞지 않은 상태임");
             eventResult.setSuccessed(false);
         } catch (Exception e) {
             eventResult.setSuccessed(false);
