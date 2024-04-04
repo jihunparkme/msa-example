@@ -18,7 +18,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class BookEventConsumers {
 
-    //private final Logger log = LoggerFactory.getLogger(BookEventConsumers.class);
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final MakeAvailableUseCase makeAvailableUsecase;
     private final MakeUnAvailableUseCase makeUnavailable;
@@ -39,9 +38,7 @@ public class BookEventConsumers {
             System.out.println("전송받은 값 :" + record.value());
             makeUnavailable.unavailable(Long.valueOf(itemRented.getItem().getNo()));
             eventResult.setSuccessed(true);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("도서 상태가 논리적으로 맞지 않음");
             eventResult.setSuccessed(false);
         }
@@ -59,8 +56,8 @@ public class BookEventConsumers {
         eventResult.setItem(itemReturned.getItem());
         eventResult.setPoint(itemReturned.getPoint());
 
-        try{
-            System.out.printf("전송받은 값 :"  +record.value());
+        try {
+            System.out.printf("전송받은 값 :" + record.value());
             makeAvailableUsecase.available(Long.valueOf(itemReturned.getItem().getNo()));
             eventResult.setSuccessed(true);
         } catch (IllegalArgumentException e) {
