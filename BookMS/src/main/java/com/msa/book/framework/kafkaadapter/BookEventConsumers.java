@@ -39,10 +39,10 @@ public class BookEventConsumers {
         try {
             log.info("전송받은 값: {}", record.value());
             makeUnavailable.unavailable(Long.valueOf(itemRented.getItem().getNo()));
-            eventResult.setSuccessed(true);
+            eventResult.setSuccess(true);
         } catch (Exception e) {
             log.error("도서 상태가 논리적으로 맞지 않은 상태임");
-            eventResult.setSuccessed(false);
+            eventResult.setSuccess(false);
         }
 
         eventProducer.occurEvent(eventResult);
@@ -61,12 +61,12 @@ public class BookEventConsumers {
         try {
             log.info("전송받은 값: {}", record.value());
             makeAvailableUsecase.available(Long.valueOf(itemReturned.getItem().getNo()));
-            eventResult.setSuccessed(true);
+            eventResult.setSuccess(true);
         } catch (IllegalArgumentException e) {
             log.error("도서 상태가 논리적으로 맞지 않은 상태임");
-            eventResult.setSuccessed(false);
+            eventResult.setSuccess(false);
         } catch (Exception e) {
-            eventResult.setSuccessed(false);
+            eventResult.setSuccess(false);
         }
         eventProducer.occurEvent(eventResult);
     }
