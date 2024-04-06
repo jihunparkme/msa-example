@@ -86,9 +86,26 @@ public class RentalCard {
         return this;
     }
 
+    /**
+     * 보상 트랜잭션 대여 취소
+     */
     public RentalCard cancelRentItem(Item item) {
-        RentalItem rentalItem = this.rentalItemList.stream().filter(i -> i.getItem().equals(item)).findFirst().get();
+        RentalItem rentalItem = this.rentalItemList.stream()
+                .filter(i -> i.getItem().equals(item))
+                .findFirst().get();
         this.rentalItemList.remove(rentalItem);
+        return this;
+    }
+
+    /**
+     * 보상 트랜잭션 반납 취소
+     */
+    public RentalCard cancelReturnItem(Item item, long point) {
+        ReturnItem returnItem = this.returnItemLIst.stream()
+                .filter(i -> i.getRentalItem().getItem().equals(item))
+                .findFirst().get();
+        this.addRentalItem(returnItem.getRentalItem());
+        this.removeReturnItem(returnItem);
         return this;
     }
 
@@ -109,15 +126,6 @@ public class RentalCard {
         calculateLateFee(rentalItem, returnDate);
         this.addReturnItem(ReturnItem.createReturnItem(rentalItem));
         this.removeRentalItem(rentalItem);
-        return this;
-    }
-
-    public RentalCard cancelReturnItem(Item item, long point) {
-        ReturnItem returnItem = this.returnItemLIst.stream()
-                .filter(i -> i.getRentalItem().getItem().equals(item))
-                .findFirst().get();
-        this.addRentalItem(returnItem.getRentalItem());
-        this.removeReturnItem(returnItem);
         return this;
     }
 
@@ -159,6 +167,9 @@ public class RentalCard {
 
     }
 
+    /**
+     * 보상 트랜잭션 정지 대여 해제 처리 취소
+     */
     public long cancelMakeAvailableRental(long point) {
         this.setLateFee(lateFee.addPoint(point));
         this.rentStatus = RentStatus.RENT_UNAVAILABLE;

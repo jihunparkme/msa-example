@@ -14,8 +14,8 @@ import javax.transaction.Transactional;
 import java.util.NoSuchElementException;
 
 @Service
-@RequiredArgsConstructor
 @Transactional
+@RequiredArgsConstructor
 public class CompensationInputPort implements CompensationUseCase {
 
     private final RentalCardOutputPort rentalCardOutputPort;
@@ -23,7 +23,6 @@ public class CompensationInputPort implements CompensationUseCase {
 
     @Override
     public RentalCard cancelRentItem(IDName idName, Item item) {
-
         return rentalCardOutputPort.loadRentalCard(idName.getId())
                 .map(rentalCard -> {
                     try {
@@ -34,7 +33,7 @@ public class CompensationInputPort implements CompensationUseCase {
                         throw new RuntimeException(e);
                     }
                 })
-                .orElseThrow(() -> new NoSuchElementException("RentalCard not found for ID" + idName.getId()));
+                .orElseThrow(() -> new NoSuchElementException("RentalCard not found for ID: " + idName.getId()));
     }
 
     @Override
