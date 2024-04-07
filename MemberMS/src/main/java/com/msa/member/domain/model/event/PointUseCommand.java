@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 public class PointUseCommand implements Serializable {
     private IDName idName;
     private long point;

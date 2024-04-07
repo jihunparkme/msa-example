@@ -44,5 +44,6 @@ consumer:
     name: point_use
   groupid:
     name: member
+
 kafka:
   bootstrapAddress: localhost:9092

@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Setter
 public class EventResult  implements Serializable {
     private EventType eventType;
-    private boolean isSuccessed;
+    private boolean isSuccess;
     private IDName idName;
     private Item item;
     private long point;

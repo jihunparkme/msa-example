@@ -48,16 +48,16 @@ public class MemberEventConsumers {
         System.out.printf(record.value());
         try {
             usePointUsecase.userPoint(overdueCleared.getIdName(), overdueCleared.getPoint());
-            eventResult.setSuccessed(true);
+            eventResult.setSuccess(true);
         } catch (Exception e) {
-            eventResult.setSuccessed(false);
+            eventResult.setSuccess(false);
         }
         eventProducer.occurEvent(eventResult);
     }
 
     @KafkaListener(topics = "${consumer.topic4.name}", groupId = "${consumer.groupid.name}")
     public void consumeUsePoint(ConsumerRecord<String, String> record) throws Exception {
-        System.out.printf(record.value());
+        log.info(record.value());
         PointUseCommand pointUseCommand = objectMapper.readValue(record.value(), PointUseCommand.class);
         try {
             usePointUsecase.userPoint(pointUseCommand.getIdName(), pointUseCommand.getPoint());

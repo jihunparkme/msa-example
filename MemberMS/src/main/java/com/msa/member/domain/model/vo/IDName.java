@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Embeddable;
 
 @Data
+@Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
-@Embeddable
 public class IDName {
     private String id;
     private String name;
